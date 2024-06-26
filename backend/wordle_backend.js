@@ -3,6 +3,9 @@ const wsport = port + 1;
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
+// CORS
+const cors = require("cors");
+
 const app = express();
 const Wordle = require("./model.js");
 const fs = require("fs").promises;
@@ -54,6 +57,12 @@ async function loadWords() {
   app.use(cookieParser()); // cookies
   // https://expressjs.com/en/starter/static-files.html
   // app.use(express.static('static-content'));
+  app.use(
+    cors({
+      origin: "https://wordle-n8rp5.ondigitalocean.app/",
+      credentials: "true",
+    })
+  );
 
   /******************************************************************************
    * web sockets
