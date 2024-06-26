@@ -1,4 +1,5 @@
-import { apiURL } from "../config";
+import config from "../config.js";
+const apiURL = config.apiUrl;
 
 // Get my username
 async function api_getUsername() {
